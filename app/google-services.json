@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "744951466116",
+    "project_id": "book-library-e5adf",
+    "storage_bucket": "book-library-e5adf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744951466116:android:f34a06e385b466cc341ad1",
+        "android_client_info": {
+          "package_name": "iut.montpellier.booklibrary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAH9nL2t-VSL62mJbxwJ-hqnZt1qdyld9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
