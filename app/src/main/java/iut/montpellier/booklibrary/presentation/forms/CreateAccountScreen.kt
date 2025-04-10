@@ -1,7 +1,5 @@
 package iut.montpellier.booklibrary.presentation.forms
 
-
-
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -31,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import iut.montpellier.booklibrary.presentation.navigation.Route
 import iut.montpellier.booklibrary.presentation.viewModels.AuthViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -79,7 +78,7 @@ fun CreateAccountScreen(navController: NavHostController, authViewModel: AuthVie
                 onClick = {
                     if (password == confirmPassword) {
                         authViewModel.createAccount(email, password) {
-                            navController.navigate("Home")
+                            navController.navigate(Route.HomeScreen)
                         }
                     }
                 },

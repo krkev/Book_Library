@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.ui.tooling.preview.Preview
+import iut.montpellier.booklibrary.presentation.navigation.Route
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -70,7 +71,7 @@ fun LoginScreen(navController: NavHostController, authViewModel : AuthViewModel 
                 onClick = {
                     authViewModel.login(email, password){
                         Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
-                        navController.navigate("Home")
+                        navController.navigate(Route.HomeScreen)
                     }
                 },
                 shape = MaterialTheme.shapes.medium,
