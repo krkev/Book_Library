@@ -69,7 +69,7 @@ fun BookCart(
 
             Spacer(modifier = Modifier.width(8.dp))
 
-            Column(){
+            Column {
 
                 Text(
                     text = title,

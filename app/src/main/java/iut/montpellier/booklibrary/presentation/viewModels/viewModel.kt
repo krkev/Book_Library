@@ -14,12 +14,12 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class viewModel @Inject constructor(val repo: AllBookRepo): ViewModel() {
+class ViewModel @Inject constructor(private val repo: AllBookRepo): ViewModel() {
 
     private  val _state: MutableState<ItemState> = mutableStateOf(ItemState())
     val state: MutableState<ItemState> = _state
 
-    fun BringAllBooks(){
+    fun bringAllBooks(){
         viewModelScope.launch {
             repo.getAllBooks().collect{
 
@@ -33,7 +33,7 @@ class viewModel @Inject constructor(val repo: AllBookRepo): ViewModel() {
                         _state.value = ItemState(items = it.data)
                     }
                     is ResultState.Error ->{
-                        _state.value = ItemState(error = it.exception.localizedMessage)
+                        _state.value = ItemState(error = it.exception.localizedMessage ?: "An unexpected error occurred")
                     }
                 }
             }
@@ -43,7 +43,7 @@ class viewModel @Inject constructor(val repo: AllBookRepo): ViewModel() {
     }
 
 
-    fun BringCategories(){
+    fun bringCategories(){
         viewModelScope.launch {
             repo.getAllCategory().collect{
 
@@ -52,7 +52,7 @@ class viewModel @Inject constructor(val repo: AllBookRepo): ViewModel() {
                         _state.value = ItemState(isLoading = true)
                     }
                     is ResultState.Error ->{
-                        _state.value = ItemState(error = it.exception.localizedMessage)
+                        _state.value = ItemState(error = it.exception.localizedMessage ?: "An unexpected error occurred")
                     }
                     is ResultState.Success ->{
                         _state.value = ItemState(category = it.data)
@@ -63,7 +63,7 @@ class viewModel @Inject constructor(val repo: AllBookRepo): ViewModel() {
     }
 
 
-    fun BringAllBooksByCategory(category: String){
+    fun bringAllBooksByCategory(category: String){
         viewModelScope.launch {
             repo.getAllBooksByCategory(category).collect{
                 when(it){
@@ -71,7 +71,7 @@ class viewModel @Inject constructor(val repo: AllBookRepo): ViewModel() {
                         _state.value = ItemState(isLoading = true)
                     }
                     is ResultState.Error -> {
-                        _state.value = ItemState(error = it.exception.localizedMessage)
+                        _state.value = ItemState(error = it.exception.localizedMessage ?: "An unexpected error occurred")
                     }
                     is ResultState.Success ->{
                         _state.value = ItemState(items = it.data)

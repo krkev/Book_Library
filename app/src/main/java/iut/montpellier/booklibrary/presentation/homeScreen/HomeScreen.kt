@@ -39,9 +39,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import iut.montpellier.booklibrary.presentation.tabScreen.TabScreen
 import kotlinx.coroutines.launch
 
@@ -129,7 +131,7 @@ fun HomeScreen(navHostController: NavHostController) {
                         icon = {
                             Icon(
                                 imageVector = Icons.Filled.ReportProblem,
-                                contentDescription = "Contact Me"
+                                contentDescription = "Report"
                             )
                         },
                         onClick = {
@@ -189,4 +191,11 @@ fun HomeScreen(navHostController: NavHostController) {
     }
 
 
+}
+
+@Preview(showBackground = true)
+@Composable
+fun HomeScreenPreview() {
+    val navController = rememberNavController()
+    HomeScreen(navHostController = navController)
 }

@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
 
-class AllBookRepoImpl @Inject constructor(val firebaseDatabase: FirebaseDatabase): AllBookRepo{
+class AllBookRepoImpl @Inject constructor(private val firebaseDatabase: FirebaseDatabase): AllBookRepo{
 
     override fun getAllBooks(): Flow<ResultState<List<BookModel>>> = callbackFlow {
 
@@ -23,9 +23,7 @@ class AllBookRepoImpl @Inject constructor(val firebaseDatabase: FirebaseDatabase
 
         val valueEvent = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
-                var items: List<BookModel> = emptyList()
-                items = snapshot.children.map { value ->
+                val items: List<BookModel> = snapshot.children.map { value ->
                     value.getValue<BookModel>()!!
 
                 }
@@ -53,9 +51,7 @@ class AllBookRepoImpl @Inject constructor(val firebaseDatabase: FirebaseDatabase
         trySend(ResultState.Loading)
         val valueEvent = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-
-                var items: List<BookCategoryModel> = emptyList()
-                items = snapshot.children.map{ value ->
+                val items: List<BookCategoryModel> = snapshot.children.map{ value ->
 
                     value.getValue<BookCategoryModel>()!!
                 }
@@ -83,14 +79,9 @@ class AllBookRepoImpl @Inject constructor(val firebaseDatabase: FirebaseDatabase
         trySend(ResultState.Loading)
         val valueEvent = object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-               var items: List<BookModel> = emptyList()
-                items = snapshot.children.filter { value ->
-
-                    value.getValue<BookModel>()!!.category == category
-                }.map{ value ->
-                    value.getValue<BookModel>()!!
-                }
-
+                val items: List<BookModel> = snapshot.children
+                    .mapNotNull { it.getValue<BookModel>() }
+                    .filter { it.category == category }
                 trySend(ResultState.Success(items))
             }
 

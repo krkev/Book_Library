@@ -23,19 +23,19 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import iut.montpellier.booklibrary.presentation.effects.AnimateShimmer
 import iut.montpellier.booklibrary.presentation.uiComponent.BookCart
-import iut.montpellier.booklibrary.presentation.viewModels.viewModel
+import iut.montpellier.booklibrary.presentation.viewModels.ViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BooksByCategoryScreen(
     category: String,
-    viewModel: viewModel = hiltViewModel(),
+    viewModel: ViewModel = hiltViewModel(),
     navHostController: NavHostController
 ) {
 
     LaunchedEffect(Unit) {
 
-        viewModel.BringAllBooksByCategory(category)
+        viewModel.bringAllBooksByCategory(category)
     }
 
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
@@ -100,6 +100,7 @@ fun BooksByCategoryScreen(
                                     title = it.bookName,
                                     description = it.bookDescription,
                                     bookurl = it.bookUrl,
+                                    author = it.bookAuthor,
                                     navHostController = navHostController
                                 )
                             }

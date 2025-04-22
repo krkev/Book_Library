@@ -8,6 +8,9 @@ sealed class Route {
     object HomeScreen
 
     @Serializable
+    object SplashScreen
+
+    @Serializable
     object WelcomeScreen
 
     @Serializable

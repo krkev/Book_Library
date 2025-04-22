@@ -1,6 +1,5 @@
 package iut.montpellier.booklibrary.presentation.allBooksScreen
 
-import androidx.compose.animation.Animatable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,19 +12,19 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import iut.montpellier.booklibrary.presentation.effects.AnimateShimmer
 import iut.montpellier.booklibrary.presentation.uiComponent.BookCart
-import iut.montpellier.booklibrary.presentation.viewModels.viewModel
+import iut.montpellier.booklibrary.presentation.viewModels.ViewModel
 
 @Composable
 fun AllBooksScreen(
     modifier: Modifier= Modifier,
-    viewModel: viewModel = hiltViewModel(),
+    viewModel: ViewModel = hiltViewModel(),
     navHostController: NavHostController
 ){
 
 
     LaunchedEffect(Unit) {
 
-        viewModel.BringAllBooks()
+        viewModel.bringAllBooks()
     }
 
     val res = viewModel.state.value

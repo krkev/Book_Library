@@ -44,9 +44,9 @@ fun WelcomeScreen(navController: NavHostController) {
             onClick = { navController.navigate(Route.LoginScreen) },
             shape = MaterialTheme.shapes.medium,
             colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Black),
-            border = BorderStroke(1.dp, Color.Black)
+            border = BorderStroke(1.dp, Color.White)
         ) {
-            Text(text = "Connexion", color = Color.Black)
+            Text(text = "Connexion", color = Color.White)
         }
 
         Spacer(modifier = Modifier.height(16.dp))

@@ -53,8 +53,8 @@ fun SplashScreen(navHostController: NavHostController) {
             )
         )
 
-        navHostController.navigate(Route.Welcome){
-            popUpTo(Route.Splash)
+        navHostController.navigate(Route.WelcomeScreen){
+            popUpTo(Route.SplashScreen)
         }
     }
 

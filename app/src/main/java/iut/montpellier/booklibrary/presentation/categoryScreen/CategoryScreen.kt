@@ -14,15 +14,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import iut.montpellier.booklibrary.presentation.effects.categoryShimmer
 import iut.montpellier.booklibrary.presentation.uiComponent.BookCategoryCard
-import iut.montpellier.booklibrary.presentation.viewModels.viewModel
+import iut.montpellier.booklibrary.presentation.viewModels.ViewModel
 
 @Composable
 fun CategoryScreen(
-    viewModel: viewModel = hiltViewModel(),
+    viewModel: ViewModel = hiltViewModel(),
     navHostController: NavHostController){
 
     LaunchedEffect(Unit) {
-        viewModel.BringCategories()
+        viewModel.bringCategories()
     }
 
     Column(
